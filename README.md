@@ -4,4 +4,4 @@ This is a Pure PHP implementation based on Laravel's Collections. The usage isn'
 # Usage
 Include the file and make a new instance by passing an array to `Collection::create`.
 
-    $collection = new CharlotteDunois\Collect\Collection::create(array(1, 2, 3, 4));
+    $collection = CharlotteDunois\Collect\Collection::create(array(1, 2, 3, 4));
