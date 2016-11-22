@@ -603,8 +603,7 @@ class Collection {
 		$data = array();
 		foreach($array as $val) {
 			if(is_array($val) AND ($depth == 0 OR $depth > $in_depth)) {
-				$in_depth++;
-				$data = array_merge($data, $this->flatten_do($val, $depth, $in_depth));
+				$data = array_merge($data, $this->flatten_do($val, $depth, ($in_depth + 1)));
 			} else {
 				$data[] = $val;
 			}
