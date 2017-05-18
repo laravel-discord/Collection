@@ -7,4 +7,4 @@ Include the file and make a new instance by passing an array to `Collection::cre
     $collection = CharlotteDunois\Collect\Collection::create(array(1, 2, 3, 4));
 
 # Laravel Docs
-https://laravel.com/docs/5.2/collections
+https://laravel.com/docs/5.1/collections
