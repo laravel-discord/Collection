@@ -111,7 +111,9 @@ class Collection {
         foreach($this->data as $key => $val) {
             if($item instanceof Closure) {
                 $bool = $item($val, $key);
-                return $bool;
+                if($bool) {
+                    return true;
+                }
             } else {
                 if(!empty($value)) {
                     if($key == $item AND $val == $value) {
@@ -124,6 +126,8 @@ class Collection {
                 }
             }
         }
+        
+        return false;
     }
     
     /**
