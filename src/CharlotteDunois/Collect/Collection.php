@@ -14,9 +14,9 @@ namespace CharlotteDunois\Collect;
  * Pure PHP implementation based on Laravel's Collections.
 */
 class Collection {
-    private $data = array();
+    protected $data = array();
     
-    private function __construct($data) {
+    protected function __construct($data) {
         $this->data = $data;
     }
     
