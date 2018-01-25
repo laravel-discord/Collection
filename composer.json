@@ -2,7 +2,7 @@
 {
     "name": "charlottedunois/collection",
     "type": "library",
-    "description": "Pure PHP implementation based on Laravel's Collections.",
+    "description": "This is an export of the Collection class included in Yasmin. Similar to Laravel's and JavaScript's Collection.",
     "keywords": [ "collection", "php" ],
     "homepage": "https://github.com/CharlotteDunois/Collection",
     "license": "Apache-2.0",
@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=7.0"
     },
     "autoload": {
         "psr-4": {
