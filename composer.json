@@ -1,9 +1,8 @@
-
 {
     "name": "charlottedunois/collection",
     "type": "library",
-    "description": "This is an export of the Collection class included in Yasmin. Similar to Laravel's and JavaScript's Collection.",
-    "keywords": [ "collection", "php" ],
+    "description": "This is a subtree split of the Collection util component in Yasmin.",
+    "keywords": [ "collection", "php", "yasmin" ],
     "homepage": "https://github.com/CharlotteDunois/Collection",
     "license": "Apache-2.0",
     "authors": [
@@ -17,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CharlotteDunois\\": "src/CharlotteDunois/"
+            "CharlotteDunois\\Collect\\": "src/"
         }
     }
 }
