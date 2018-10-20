@@ -922,4 +922,3 @@ class Collection implements \Countable, \Iterator {
         };
     }
 }
-            
