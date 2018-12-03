@@ -605,7 +605,7 @@ class Collection implements \Countable, \Iterator {
      * @param bool     $preserve_keys
      * @return \CharlotteDunois\Collect\Collection
      */
-    function slice(int $offset, ?int $limit = null, bool $preserve_keys = false) {
+    function slice(int $offset, int $limit = null, bool $preserve_keys = false) {
         $data = $this->data;
         return (new self(\array_slice($data, $offset, $limit, $preserve_keys)));
     }
@@ -694,11 +694,11 @@ class Collection implements \Countable, \Iterator {
      * @return array
      * @internal
      */
-    protected function flattenDo(array $array, int $depth, int $in_depth = 0) {
+    protected function flattenDo(array $array, int $depth, int $inDepth = 0) {
         $data = array();
         foreach($array as $val) {
-            if(\is_array($val) && ($depth == 0 || $depth > $in_depth)) {
-                $data = \array_merge($data, $this->flattenDo($val, $depth, ($in_depth + 1)));
+            if(\is_array($val) && ($depth == 0 || $depth > $inDepth)) {
+                $data = \array_merge($data, $this->flattenDo($val, $depth, ($inDepth + 1)));
             } elseif($val instanceof self) {
                 $data = \array_merge($data, $val->flatten($depth)->all());
             } else {
