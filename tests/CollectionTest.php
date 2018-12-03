@@ -583,6 +583,22 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
         $this->assertSame(array(0 => 15, 4 => 0), $c2->all());
     }
     
+    function testPartition() {
+        $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0));
+        
+        $ca = $c->partition(function ($value, $key) {
+            return ($value > 30 || $key === -1);
+        });
+        $this->assertInternalType('array', $ca);
+        $this->assertSame(2, \count($ca));
+        
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $ca[0]);
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $ca[1]);
+        
+        $this->assertSame(array(1 => 42, 3 => 40), $ca[0]->all());
+        $this->assertSame(array(0 => 15, 2 => 30, 4 => 0), $ca[1]->all());
+    }
+    
     function testPluck() {
         $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0));
         

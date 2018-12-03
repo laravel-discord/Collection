@@ -20,7 +20,7 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * I think you are supposed to know what this does.
-     * @param array|null $data
+     * @param array|null  $data
      */
     function __construct(array $data = null) {
         if(!empty($data)) {
@@ -501,6 +501,26 @@ class Collection implements \Countable, \Iterator {
         }
         
         return (new self($new));
+    }
+    
+    /**
+     * Partitions the collection into two collections where the first collection contains the items that passed and the second contains the items that failed.
+     * @param callable  $closure  Callback specification: `function ($value, $key): bool`
+     * @return \CharlotteDunois\Collect\Collection[]
+     */
+    function partition(callable $closure) {
+        $collection1 = new self();
+        $collection2 = new self();
+        
+        foreach($this->data as $key => $val) {
+            if($closure($val, $key)) {
+                $collection1->set($key, $val);
+            } else {
+                $collection2->set($key, $val);
+            }
+        }
+        
+        return array($collection1, $collection2);
     }
     
     /**
