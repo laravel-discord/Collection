@@ -1,8 +1,7 @@
 {
     "name": "charlottedunois/collection",
     "type": "library",
-    "description": "This is a subtree split of the Collection util component in Yasmin.",
-    "keywords": [ "collection", "php", "yasmin" ],
+    "description": "Collection, an utility to conventionally store a key-value pair.",
     "homepage": "https://github.com/CharlotteDunois/Collection",
     "license": "Apache-2.0",
     "authors": [
