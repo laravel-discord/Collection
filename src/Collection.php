@@ -96,7 +96,7 @@ class Collection implements \Countable, \Iterator {
      * Removes an item from the collection by its key.
      * @param mixed  $key
      * @return $this
-    */
+     */
     function delete($key) {
         $this->data[$key] = null;
         unset($this->data[$key]);
@@ -138,21 +138,21 @@ class Collection implements \Countable, \Iterator {
      * Breaks the collection into multiple, smaller collections of a given size. Returns a new Collection.
      * @param int  $numitems
      * @param bool $preserve_keys
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function chunk(int $numitems, bool $preserve_keys = false) {
         return (new self(\array_chunk($this->data, $numitems, $preserve_keys)));
     }
     
     /**
      * Collapses a collection of arrays into a flat collection. Returns a new Collection.
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function collapse() {
         $new = array();
         
         foreach($this->data as $values) {
-            if($values instanceof Collection) {
+            if($values instanceof static) {
                 $values = $values->all();
             } elseif(!\is_array($values)) {
                 continue;
@@ -167,18 +167,18 @@ class Collection implements \Countable, \Iterator {
     /**
      * Combines the keys of the collection with the values of another array or collection. Returns a new Collection.
      * @param mixed  $values
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function combine($values) {
         return (new self(\array_combine($this->data, $values)));
     }
     
     /**
      * Determines whether the collection contains a given item.
-     * @param callable|mixed   $item
+     * @param callable|mixed   $item  Callback specification: `function ($value, $key): bool`
      * @param mixed|null       $value
      * @return bool
-    */
+     */
     function contains($item, $value = null) {
         foreach($this->data as $key => $val) {
             if(\is_callable($item)) {
@@ -203,14 +203,14 @@ class Collection implements \Countable, \Iterator {
     /**
      * Returns the total number of items in the collection.
      * @return int
-    */
+     */
     function count() {
         return \count($this->data);
     }
     
     /**
      * Returns a copy of itself.
-     * @return Collection
+     * @return \CharlotteDunois\Collect\Collection
      */
     function copy() {
         return (new self($this->data));
@@ -218,11 +218,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Compares the collection against another collection or a plain PHP array based on its value. Returns a new Collection.
-     * @param mixed[]|Collection  $arr
-     * @return Collection
-    */
+     * @param mixed[]|\CharlotteDunois\Collect\Collection  $arr
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function diff($arr) {
-        if($arr instanceof Collection) {
+        if($arr instanceof static) {
             $arr = $arr->all();
         }
         
@@ -231,11 +231,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Compares the collection against another collection or a plain PHP array based on its key. Returns a new Collection.
-     * @param mixed[]|Collection  $arr
-     * @return Collection
-    */
+     * @param mixed[]|\CharlotteDunois\Collect\Collection  $arr
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function diffKeys($arr) {
-        if($arr instanceof Collection) {
+        if($arr instanceof static) {
             $arr = $arr->all();
         }
         
@@ -244,9 +244,9 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Iterates over the items in the collection and passes each item to a given callback. Returning `false` in the callback will stop the processing.
-     * @param callable  $closure
+     * @param callable  $closure  Callback specification: `function ($value, $key): bool`
      * @return $this
-    */
+     */
     function each(callable $closure) {
         foreach($this->data as $key => $val) {
             $feed = $closure($val, $key);
@@ -262,8 +262,8 @@ class Collection implements \Countable, \Iterator {
      * Creates a new collection consisting of every n-th element.
      * @param int  $nth
      * @param int  $offset
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function every(int $nth, int $offset = 0) {
         if($nth <= 0) {
             return (new self($this->data));
@@ -282,12 +282,12 @@ class Collection implements \Countable, \Iterator {
     /**
      * Returns all items in the collection except for those with the specified keys. Returns a new Collection.
      * @param mixed[]  $keys
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function except(array $keys) {
         $new = array();
         foreach($this->data as $key => $val) {
-            if(!\in_array($key, $keys)) {
+            if(!\in_array($key, $keys, true)) {
                 $new[$key] = $val;
             }
         }
@@ -297,9 +297,9 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Filters the collection by a given callback, keeping only those items that pass a given truth test. Returns a new Collection.
-     * @param callable  $closure
-     * @return Collection
-    */
+     * @param callable  $closure  Callback specification: `function ($value, $key): bool`
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function filter(callable $closure) {
         $new = array();
         foreach($this->data as $key => $val) {
@@ -314,9 +314,9 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Returns the first element in the collection that passes a given truth test.
-     * @param callable|null  $closure
+     * @param callable|null  $closure  Callback specification: `function ($value, $key): bool`
      * @return mixed|null
-    */
+     */
     function first(?callable $closure = null) {
         if($closure === null) {
             if(empty($this->data)) {
@@ -340,8 +340,8 @@ class Collection implements \Countable, \Iterator {
     /**
      * Flattens a multi-dimensional collection into a single dimension. Returns a new Collection.
      * @param int  $depth
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function flatten($depth = 0) {
         $data = $this->flattenDo($this->data, $depth);
         return (new self($data));
@@ -349,8 +349,8 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Swaps the collection's keys with their corresponding values. Returns a new Collection.
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function flip() {
         $data = @\array_flip($this->data);
         return (new self($data));
@@ -360,20 +360,16 @@ class Collection implements \Countable, \Iterator {
      * Returns the item for a given key. If the key does not exist, null is returned.
      * @param mixed  $key
      * @return mixed|null
-    */
+     */
     function get($key) {
-        if(isset($this->data[$key])) {
-            return $this->data[$key];
-        }
-        
-        return null;
+        return ($this->data[$key] ?? null);
     }
     
     /**
      * Groups the collection's items by a given key. Returns a new Collection.
-     * @param mixed  $column
-     * @return Collection
-    */
+     * @param callable|mixed  $column  Callback specification: `function ($value, $key): mixed`
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function groupBy($column) {
         if(empty($column)) {
             return $this;
@@ -397,7 +393,7 @@ class Collection implements \Countable, \Iterator {
      * Determines if a given key exists in the collection.
      * @param mixed  $key
      * @return bool
-    */
+     */
     function has($key) {
         return isset($this->data[$key]);
     }
@@ -407,7 +403,7 @@ class Collection implements \Countable, \Iterator {
      * @param mixed  $col
      * @param string $glue
      * @return string
-    */
+     */
     function implode($col, string $glue = ', ') {
         $data = "";
         foreach($this->data as $key => $val) {
@@ -444,11 +440,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Removes any values that are not present in the given array or collection. Returns a new Collection.
-     * @param mixed[]|Collection  $arr
-     * @return Collection
-    */
+     * @param mixed[]|\CharlotteDunois\Collect\Collection  $arr
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function intersect($arr) {
-        if($arr instanceof Collection) {
+        if($arr instanceof static) {
             $arr = $arr->all();
         }
         
@@ -458,8 +454,8 @@ class Collection implements \Countable, \Iterator {
     /**
      * Keys the collection by the given key.
      * @param mixed  $col
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function keyBy($col) {
         $data = array();
         foreach($this->data as $key => $val) {
@@ -485,17 +481,17 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Returns all of the collection's keys. Returns a new Collection.
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function keys() {
         return (new self(\array_keys($this->data)));
     }
     
     /**
      * Returns the last element in the collection that passes a given truth test.
-     * @param callable|null  $closure
+     * @param callable|null  $closure  Callback specification: `function ($value, $key): bool`
      * @return mixed|null
-    */
+     */
     function last(?callable $closure = null) {
         if($closure === null) {
             if(empty($this->data)) {
@@ -519,9 +515,9 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Iterates through the collection and passes each value to the given callback. The callback is free to modify the item and return it, thus forming a new collection of modified items.
-     * @param callable  $closure
-     * @return Collection
-    */
+     * @param callable  $closure  Callback specification: `function ($value, $key): mixed`
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function map(?callable $closure) {
         $keys = \array_keys($this->data);
         $items = \array_map($closure, $this->data, $keys);
@@ -530,11 +526,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Return the maximum value of a given key.
-     * @param mixed  $key
+     * @param mixed|null  $key
      * @return int
-    */
-    function max($key = '') {
-        if(!empty($key)) {
+     */
+    function max($key = null) {
+        if($key !== null) {
             $data = \array_column($this->data, $key);
         } else {
             $data = $this->data;
@@ -544,19 +540,10 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
-     * Merges the given array into the collection. Any string key in the array matching a string key in the collection will overwrite the value in the collection. Returns a new Collection.
-     * @param string[]  $arr
-     * @return Collection
-    */
-    function merge(array $arr) {
-        return (new self(\array_merge($this->data, $arr)));
-    }
-    
-    /**
      * Return the minimum value of a given key.
      * @param mixed|null  $key
      * @return int
-    */
+     */
     function min($key = null) {
         if($key !== null) {
             $data = \array_column($this->data, $key);
@@ -568,14 +555,24 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
+     * Merges the given collection into this collection, resulting in a new collection.
+     * Any string key in the given collection matching a string key in this collection will overwrite the value in this collection.
+     * @param \CharlotteDunois\Collect\Collection  $collection
+     * @return \CharlotteDunois\Collect\Collection
+     */
+    function merge(\CharlotteDunois\Collect\Collection $collection) {
+        return (new self(\array_merge($this->data, $collection->all())));
+    }
+    
+    /**
      * Returns the items in the collection with the specified keys. Returns a new Collection.
      * @param mixed[]  $keys
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function only(array $keys) {
         $new = array();
         foreach($this->data as $key => $val) {
-            if(\in_array($key, $keys)) {
+            if(\in_array($key, $keys, true)) {
                 $new[$key] = $val;
             }
         }
@@ -587,8 +584,8 @@ class Collection implements \Countable, \Iterator {
      * Return the values from a single column in the input array. Returns a new Collection.
      * @param mixed    $key
      * @param mixed    $index
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function pluck($key, $index = null) {
         $data = array();
         
@@ -616,7 +613,7 @@ class Collection implements \Countable, \Iterator {
     /**
      * Removes and returns the last item from the collection.
      * @return mixed
-    */
+     */
     function pop() {
         return \array_pop($this->data);
     }
@@ -625,8 +622,13 @@ class Collection implements \Countable, \Iterator {
      * Removes and returns an item from the collection by its key.
      * @param mixed  $key
      * @return mixed
-    */
+     * @throws \InvalidArgumentException
+     */
     function pull($key) {
+        if(!isset($this->data[$key])) {
+            throw new \InvalidArgumentException('Unknown key');
+        }
+        
         $value = $this->data[$key];
         
         $this->data[$key] = null;
@@ -638,8 +640,8 @@ class Collection implements \Countable, \Iterator {
     /**
      * Returns one random item, or multiple random items inside a Collection, from the Collection. Returns a new Collection.
      * @param int  $num
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function random(int $num = 1) {
         $rand = \array_rand($this->data, $num);
         if(!\is_array($rand)) {
@@ -656,10 +658,10 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Reduces the collection to a single value, passing the result of each iteration into the subsequent iteration.
-     * @param callable   $closure
+     * @param callable   $closure  Callback specification: `function ($carry, $value): mixed`
      * @param mixed|null $carry
      * @return mixed|null|void
-    */
+     */
     function reduce(callable $closure, $carry = null) {
         foreach($this->data as $val) {
             $carry = $closure($carry, $val);
@@ -671,8 +673,8 @@ class Collection implements \Countable, \Iterator {
     /**
      * Reverses the order of the collection's items. Returns a new Collection.
      * @param bool $preserve_keys
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function reverse(bool $preserve_keys = false) {
         return (new self(\array_reverse($this->data, $preserve_keys)));
     }
@@ -682,7 +684,7 @@ class Collection implements \Countable, \Iterator {
      * @param mixed   $needle
      * @param bool    $strict
      * @return mixed|bool
-    */
+     */
     function search($needle, bool $strict = true) {
         return \array_search($needle, $this->data, $strict);
     }
@@ -690,15 +692,15 @@ class Collection implements \Countable, \Iterator {
     /**
      * Removes and returns the first item from the collection.
      * @return mixed
-    */
+     */
     function shift() {
         return \array_shift($this->data);
     }
     
     /**
      * Randomly shuffles the items in the collection. Returns a new Collection.
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function shuffle() {
         $data = $this->data;
         \shuffle($data);
@@ -711,8 +713,8 @@ class Collection implements \Countable, \Iterator {
      * @param int      $offset
      * @param int      $limit
      * @param bool     $preserve_keys
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function slice(int $offset, ?int $limit = null, bool $preserve_keys = false) {
         $data = $this->data;
         return (new self(\array_slice($data, $offset, $limit, $preserve_keys)));
@@ -720,10 +722,10 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Sorts the collection. Returns a new Collection.
-     * @param callable    $closure
+     * @param callable    $closure  Callback specification: `function ($a, $b): int`
      * @param int         $options
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function sort(?callable $closure = null, $options = SORT_REGULAR) {
         $data = $this->data;
         
@@ -738,11 +740,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Sorts the collection by the given key. Returns a new Collection.
-     * @param mixed|callable  $sortkey
+     * @param mixed|callable  $sortkey  Callback specification: `function ($value, $key): mixed`
      * @param int             $options
      * @param bool            $descending
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function sortBy($sortkey, $options = \SORT_REGULAR, bool $descending = false) {
         $sortkey = $this->valueRetriever($sortkey);
         
@@ -766,60 +768,22 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
-     * Sorts the collection by the given key in descending order. Returns a new Collection.
-     * @param mixed|\Closure  $sortkey
-     * @param int             $options
-     * @return Collection
-    */
-    function sortByDesc($sortkey, $options = \SORT_REGULAR) {
-        return $this->sortBy($sortkey, $options, true);
-    }
-    
-    /**
      * Removes and returns a slice of items starting at the specified index. Returns a new Collection.
      * @param int      $offset
      * @param int      $length
      * @param mixed[]  $replacement
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function splice(int $offset, int $length = null, array $replacement = array()) {
         $data = $this->data;
         return (new self(\array_splice($data, $offset, $length, $replacement)));
     }
     
     /**
-     * Returns the sum of all items in the collection.
-     * @param callable|null $closure
-     * @return int
-    */
-    function sum(?callable $closure = null) {
-        if($closure === null) {
-            return \array_sum($this->data);
-        }
-        
-        return $this->reduce(function ($result, $item) use ($closure) {
-            return $result += $closure($item);
-        }, 0);
-    }
-    
-    /**
-     * Returns a new collection with the specified number of items.
-     * @param int  $limit
-     * @return Collection
-    */
-    function take(int $limit) {
-        if($limit < 0) {
-            return $this->slice($limit, ((int) \abs($limit)));
-        }
-        
-        return $this->slice(0, $limit);
-    }
-    
-    /**
      * Returns all of the unique items in the collection. Returns a new Collection.
-     * @param mixed  $key
-     * @return Collection
-    */
+     * @param mixed|null  $key
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function unique($key) {
         if($key === null) {
             return (new self(\array_unique($this->data, \SORT_REGULAR)));
@@ -830,7 +794,7 @@ class Collection implements \Countable, \Iterator {
         $exists = array();
         return $this->filter(function ($item) use ($key, &$exists) {
             $id = $key($item);
-            if(\in_array($id, $exists)) {
+            if(\in_array($id, $exists, true)) {
                 return false;
             }
             
@@ -841,8 +805,8 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Returns a new collection with the keys reset to consecutive integers.
-     * @return Collection
-    */
+     * @return \CharlotteDunois\Collect\Collection
+     */
     function values() {
         return (new self(\array_values($this->data)));
     }
@@ -862,14 +826,14 @@ class Collection implements \Countable, \Iterator {
         
         while(($segment = \array_shift($key)) !== null) {
             if($segment === '*') {
-                if($target instanceof Collection) {
+                if($target instanceof static) {
                     $target = $target->all();
                 } elseif(!\is_array($target)) {
                     return $this->valueRetriever($default);
                 }
                 
                 $result = \array_column($target, $key);
-                if(\in_array('*', $key)) {
+                if(\in_array('*', $key, true)) {
                     return (new self($result))->collapse();
                 } else {
                     return $result;
