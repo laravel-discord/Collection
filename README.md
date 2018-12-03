@@ -1,6 +1,6 @@
 # Collection
 
-This is a subtree split of the Collection util component in Yasmin. All PRs should be made to [Yasmin](https://github.com/CharlotteDunois/Yasmin).
+Collection, an utility to conventionally store a key-value pair.
 
 # Documentation
 https://yasmin.neko.run/v0.5.0/CharlotteDunois/Yasmin/Utils/Collection.html
