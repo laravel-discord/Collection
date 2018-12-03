@@ -691,6 +691,9 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
+     * @param array  $array
+     * @param int    $depth
+     * @param int    $inDepth
      * @return array
      * @internal
      */
