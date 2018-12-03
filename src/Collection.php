@@ -22,7 +22,7 @@ class Collection implements \Countable, \Iterator {
      * I think you are supposed to know what this does.
      * @param array|null $data
      */
-    function __construct(?array $data = null) {
+    function __construct(array $data = null) {
         if(!empty($data)) {
             $this->data = $data;
         }
@@ -241,7 +241,7 @@ class Collection implements \Countable, \Iterator {
      * @param callable|null  $closure  Callback specification: `function ($value, $key): bool`
      * @return mixed|null
      */
-    function first(?callable $closure = null) {
+    function first(callable $closure = null) {
         if($closure === null) {
             if(empty($this->data)) {
                 return null;
@@ -392,7 +392,7 @@ class Collection implements \Countable, \Iterator {
      * @param callable|null  $closure  Callback specification: `function ($value, $key): bool`
      * @return mixed|null
      */
-    function last(?callable $closure = null) {
+    function last(callable $closure = null) {
         if($closure === null) {
             if(empty($this->data)) {
                 return null;
@@ -415,12 +415,13 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Iterates through the collection and passes each value to the given callback. The callback is free to modify the item and return it, thus forming a new collection of modified items.
-     * @param callable  $closure  Callback specification: `function ($value, $key): mixed`
+     * @param callable|null  $closure  Callback specification: `function ($value, $key): mixed`
      * @return \CharlotteDunois\Collect\Collection
      */
-    function map(?callable $closure) {
+    function map(callable $closure) {
         $keys = \array_keys($this->data);
         $items = \array_map($closure, $this->data, $keys);
+        
         return (new self(\array_combine($keys, $items)));
     }
     
@@ -626,11 +627,11 @@ class Collection implements \Countable, \Iterator {
     
     /**
      * Sorts the collection using either the callable or `$options). Returns a new Collection.
-     * @param callable    $closure  Callback specification: `function ($a, $b): int`
-     * @param int         $options
+     * @param callable|null  $closure  Callback specification: `function ($a, $b): int`
+     * @param int            $options
      * @return \CharlotteDunois\Collect\Collection
      */
-    function sort(?callable $closure = null, $options = \SORT_REGULAR) {
+    function sort(callable $closure = null, $options = \SORT_REGULAR) {
         $data = $this->data;
         
         if($closure instanceof \Closure) {
