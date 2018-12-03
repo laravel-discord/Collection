@@ -399,7 +399,8 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
-     * Joins the items in a collection. Its arguments depend on the type of items in the collection. If the collection contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values.
+     * Joins the items in a collection. Its arguments depend on the type of items in the collection.
+     * If the collection contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values.
      * @param mixed  $col
      * @param string $glue
      * @return string
@@ -611,33 +612,6 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
-     * Removes and returns the last item from the collection.
-     * @return mixed
-     */
-    function pop() {
-        return \array_pop($this->data);
-    }
-    
-    /**
-     * Removes and returns an item from the collection by its key.
-     * @param mixed  $key
-     * @return mixed
-     * @throws \InvalidArgumentException
-     */
-    function pull($key) {
-        if(!isset($this->data[$key])) {
-            throw new \InvalidArgumentException('Unknown key');
-        }
-        
-        $value = $this->data[$key];
-        
-        $this->data[$key] = null;
-        unset($this->data[$key]);
-        
-        return $value;
-    }
-    
-    /**
      * Returns one random item, or multiple random items inside a Collection, from the Collection. Returns a new Collection.
      * @param int  $num
      * @return \CharlotteDunois\Collect\Collection
@@ -687,14 +661,6 @@ class Collection implements \Countable, \Iterator {
      */
     function search($needle, bool $strict = true) {
         return \array_search($needle, $this->data, $strict);
-    }
-    
-    /**
-     * Removes and returns the first item from the collection.
-     * @return mixed
-     */
-    function shift() {
-        return \array_shift($this->data);
     }
     
     /**
