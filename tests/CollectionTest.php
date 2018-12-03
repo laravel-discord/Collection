@@ -103,7 +103,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
     function testDiffCollection() {
         $c = new \CharlotteDunois\Collect\Collection(array(15, 42));
         
-        $diff = $c->diff(array(15));
+        $diff = $c->diff((new \CharlotteDunois\Collect\Collection(array(15))));
         $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $diff);
         $this->assertNotEquals($c, $diff);
         
@@ -823,6 +823,15 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
         $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0, 40, 42, 30, 0, 1));
         
         $c2 = $c->unique(null);
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
+        
+        $this->assertNotEquals($c, $c2);
+    }
+    
+    function testUniqueWithKeyOnScalar() {
+        $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0, 40, 42, 30, 0, 1));
+        
+        $c2 = $c->unique('k');
         $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
         
         $this->assertNotEquals($c, $c2);
