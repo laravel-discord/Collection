@@ -16,6 +16,11 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
         $this->assertSame($arr, $c->all());
     }
     
+    function testCountable() {
+        $c = new \CharlotteDunois\Collect\Collection(array(5, 5, 20));
+        $this->assertSame(3, \count($c));
+    }
+    
     function testIterator() {
         $arr = array(5, 5, 20);
         $c = new \CharlotteDunois\Collect\Collection($arr);
