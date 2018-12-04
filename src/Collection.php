@@ -646,19 +646,61 @@ class Collection implements \Countable, \Iterator {
     }
     
     /**
-     * Sorts the collection using either the callable or `$options). Returns a new Collection.
-     * @param callable|null  $closure  Callback specification: `function ($a, $b): int`
-     * @param int            $options
+     * Sorts the collection, using sort behaviour flags. Returns a new Collection.
+     * @param bool  $descending
+     * @param int   $options
      * @return \CharlotteDunois\Collect\Collection
      */
-    function sort(callable $closure = null, $options = \SORT_REGULAR) {
+    function sort(bool $descending = false, int $options = \SORT_REGULAR) {
         $data = $this->data;
         
-        if($closure instanceof \Closure) {
-            \uasort($data, $closure);
+        if($descending) {
+            \arsort($data, $options);
         } else {
             \asort($data, $options);
         }
+        
+        return (new self($data));
+    }
+    
+    /**
+     * Sorts the collection by key, using sort behaviour flags. Returns a new Collection.
+     * @param bool  $descending
+     * @param int   $options
+     * @return \CharlotteDunois\Collect\Collection
+     */
+    function sortKey(bool $descending = false, int $options = \SORT_REGULAR) {
+        $data = $this->data;
+        
+        if($descending) {
+            \krsort($data, $options);
+        } else {
+            \ksort($data, $options);
+        }
+        
+        return (new self($data));
+    }
+    
+    /**
+     * Sorts the collection using a custom sorting function. Returns a new Collection.
+     * @param callable  $closure  Callback specification: `function ($a, $b): int`
+     * @return \CharlotteDunois\Collect\Collection
+     */
+    function sortCustom(callable $closure = null) {
+        $data = $this->data;
+        \uasort($data, $closure);
+        
+        return (new self($data));
+    }
+    
+    /**
+     * Sorts the collection by key using a custom sorting function. Returns a new Collection.
+     * @param callable  $closure  Callback specification: `function ($a, $b): int`
+     * @return \CharlotteDunois\Collect\Collection
+     */
+    function sortCustomKey(callable $closure = null) {
+        $data = $this->data;
+        \uksort($data, $closure);
         
         return (new self($data));
     }

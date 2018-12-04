@@ -812,16 +812,58 @@ class CollectionTest extends \PHPUnit\Framework\TestCase {
         $this->assertSame(array(4 => 0, 0 => 15, 2 => 30, 3 => 40, 1 => 42), $c2->all());
     }
     
-    function testSortCallable() {
+    function testSortDescending() {
         $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0));
         
-        $c2 = $c->sort(function ($a, $b) {
+        $c2 = $c->sort(true);
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
+        $this->assertNotSame($c, $c2);
+        
+        $this->assertSame(array(1 => 42, 3 => 40, 2 => 30, 0 => 15, 4 => 0), $c2->all());
+    }
+    
+    function testSortKey() {
+        $c = new \CharlotteDunois\Collect\Collection(array(4 => 0, 0 => 15, 2 => 30, 3 => 40, 1 => 42));
+        
+        $c2 = $c->sortKey();
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
+        $this->assertNotSame($c, $c2);
+        
+        $this->assertSame(array(15, 42, 30, 40, 0), $c2->all());
+    }
+    
+    function testSortKeyDescending() {
+        $c = new \CharlotteDunois\Collect\Collection(array(4 => 0, 0 => 15, 2 => 30, 3 => 40, 1 => 42));
+        
+        $c2 = $c->sortKey(true);
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
+        $this->assertNotSame($c, $c2);
+        
+        $this->assertSame(array(4 => 0, 3 => 40, 2 => 30, 1 => 42, 0 => 15), $c2->all());
+    }
+    
+    function testSortCustom() {
+        $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0));
+        
+        $c2 = $c->sortCustom(function ($a, $b) {
             return ($b <=> $a);
         });
         $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
         $this->assertNotSame($c, $c2);
         
         $this->assertSame(array(1 => 42, 3 => 40, 2 => 30, 0 => 15, 4 => 0), $c2->all());
+    }
+    
+    function testSortCustomKey() {
+        $c = new \CharlotteDunois\Collect\Collection(array(15, 42, 30, 40, 0));
+        
+        $c2 = $c->sortCustomKey(function ($a, $b) {
+            return ($b <=> $a);
+        });
+        $this->assertInstanceOf(\CharlotteDunois\Collect\Collection::class, $c2);
+        $this->assertNotSame($c, $c2);
+        
+        $this->assertSame(array(4 => 0, 3 => 40, 2 => 30, 1 => 42,  0 => 15), $c2->all());
     }
     
     function testUnique() {
