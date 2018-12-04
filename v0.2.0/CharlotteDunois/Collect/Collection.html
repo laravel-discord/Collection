@@ -91,7 +91,7 @@
 
     <p>    class
     <strong>Collection</strong>        implements
-        <a href="https://secure.php.net/Countable" target="_blank">Countable</a>, <a href="https://secure.php.net/Iterator" target="_blank">Iterator</a>        (<a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php" target="_blank">View source</a>)
+        <a href="https://secure.php.net/Countable" target="_blank">Countable</a>, <a href="https://secure.php.net/Iterator" target="_blank">Iterator</a>        (<a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php" target="_blank">View source</a>)
 </p>
 
         
@@ -111,7 +111,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(array|null $data = null)
+                    <a href="#method___construct">__construct</a>(array $data = null)
         
                                             <p>I think you are supposed to know what this does.</p>                </div>
                 <div class="col-md-2"></div>
@@ -128,22 +128,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_avg">avg</a>(callable|null $closure = null)
-        
-                                            <p>Gets the average of all items.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_chunk">chunk</a>(int $numitems, bool $preserve_keys = false)
         
-                                            <p>Breaks the collection into multiple, smaller collections of a given size. Returns a new Collection.</p>                </div>
+                                            <p>Breaks the collection into multiple, smaller chunks of a given size. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -154,36 +144,6 @@
                     <a href="#method_clear">clear</a>()
         
                                             <p>Clears the Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_collapse">collapse</a>()
-        
-                                            <p>Collapses a collection of arrays into a flat collection. Returns a new Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_combine">combine</a>(mixed $values)
-        
-                                            <p>Combines the keys of the collection with the values of another array or collection. Returns a new Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_contains">contains</a>(callable|mixed $item, mixed|null $value = null)
-        
-                                            <p>Determines whether the collection contains a given item.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -248,12 +208,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_every">every</a>(int $nth, int $offset = 0)
+                    <a href="#method_every">every</a>(callable $closure)
         
-                                            <p>Creates a new collection consisting of every n-th element.</p>                </div>
+                                            <p>Returns true if all elements pass the given truth test.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -281,7 +241,7 @@
                     mixed|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_first">first</a>(callable|null $closure = null)
+                    <a href="#method_first">first</a>(callable $closure = null)
         
                                             <p>Returns the first element in the collection that passes a given truth test.</p>                </div>
                 <div class="col-md-2"></div>
@@ -294,16 +254,6 @@
                     <a href="#method_flatten">flatten</a>(int $depth = 0)
         
                                             <p>Flattens a multi-dimensional collection into a single dimension. Returns a new Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_flip">flip</a>()
-        
-                                            <p>Swaps the collection's keys with their corresponding values. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -321,7 +271,7 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_groupBy">groupBy</a>(mixed $column)
+                    <a href="#method_groupBy">groupBy</a>(callable|mixed $column)
         
                                             <p>Groups the collection's items by a given key. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
@@ -343,7 +293,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_implode">implode</a>(mixed $col, string $glue = &#039;, &#039;)
         
-                                            <p>Joins the items in a collection. Its arguments depend on the type of items in the collection. If the collection contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values.</p>                </div>
+                                            <p>Joins the items in a collection. Its arguments depend on the type of items in the collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -371,16 +321,6 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_keyBy">keyBy</a>(mixed $col)
-        
-                                            <p>Keys the collection by the given key.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_keys">keys</a>()
         
                                             <p>Returns all of the collection's keys. Returns a new Collection.</p>                </div>
@@ -391,7 +331,7 @@
                     mixed|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_last">last</a>(callable|null $closure = null)
+                    <a href="#method_last">last</a>(callable $closure = null)
         
                                             <p>Returns the last element in the collection that passes a given truth test.</p>                </div>
                 <div class="col-md-2"></div>
@@ -401,7 +341,7 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_map">map</a>(callable|null $closure)
+                    <a href="#method_map">map</a>(callable $closure)
         
                                             <p>Iterates through the collection and passes each value to the given callback. The callback is free to modify the item and return it, thus forming a new collection of modified items.</p>                </div>
                 <div class="col-md-2"></div>
@@ -411,7 +351,7 @@
                     int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_max">max</a>(mixed $key = &#039;&#039;)
+                    <a href="#method_max">max</a>(mixed|null $key = null)
         
                                             <p>Return the maximum value of a given key.</p>                </div>
                 <div class="col-md-2"></div>
@@ -421,9 +361,9 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_merge">merge</a>(array $arr)
+                    <a href="#method_merge">merge</a>(<a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a> $collection)
         
-                                            <p>Merges the given array into the collection. Any string key in the array matching a string key in the collection will overwrite the value in the collection. Returns a new Collection.</p>                </div>
+                                            <p>Merges the given collection into this collection, resulting in a new collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -441,9 +381,29 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_nth">nth</a>(int $nth, int $offset = 0)
+        
+                                            <p>Creates a new collection consisting of every n-th element.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_only">only</a>(array $keys)
         
                                             <p>Returns the items in the collection with the specified keys. Returns a new Collection.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_partition">partition</a>(callable $closure)
+        
+                                            <p>Partitions the collection into two collections where the first collection contains the items that passed and the second contains the items that failed.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -454,26 +414,6 @@
                     <a href="#method_pluck">pluck</a>(mixed $key, mixed $index = null)
         
                                             <p>Return the values from a single column in the input array. Returns a new Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_pop">pop</a>()
-        
-                                            <p>Removes and returns the last item from the collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_pull">pull</a>(mixed $key)
-        
-                                            <p>Removes and returns an item from the collection by its key.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -511,7 +451,7 @@
                     mixed|bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_search">search</a>(callable|mixed $needle, bool $strict = false)
+                    <a href="#method_search">search</a>(mixed $needle, bool $strict = true)
         
                                             <p>Searches the collection for the given value and returns its key if found. If the item is not found, false is returned.</p>                </div>
                 <div class="col-md-2"></div>
@@ -524,16 +464,6 @@
                     <a href="#method_set">set</a>(mixed $key, mixed $value)
         
                                             <p>Sets a key-value pair.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_shift">shift</a>()
-        
-                                            <p>Removes and returns the first item from the collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -551,19 +481,19 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_slice">slice</a>(int $offset, int|null $limit = null, bool $preserve_keys = false)
+                    <a href="#method_slice">slice</a>(int $offset, int $limit = null, bool $preserve_keys = false)
         
                                             <p>Returns a slice of the collection starting at the given index. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_sort">sort</a>(callable|null $closure = null, int $options = SORT_REGULAR)
+                    <a href="#method_some">some</a>(callable $closure)
         
-                                            <p>Sorts the collection. Returns a new Collection.</p>                </div>
+                                            <p>Returns true if at least one element passes the given truth test.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -571,9 +501,9 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_sortBy">sortBy</a>(mixed|callable $sortkey, int $options = \SORT_REGULAR, bool $descending = false)
+                    <a href="#method_sort">sort</a>(bool $descending = false, int $options = \SORT_REGULAR)
         
-                                            <p>Sorts the collection by the given key. Returns a new Collection.</p>                </div>
+                                            <p>Sorts the collection, using sort behaviour flags. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -581,9 +511,9 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_sortByDesc">sortByDesc</a>(mixed|<a href="https://secure.php.net/Closure" target="_blank">Closure</a> $sortkey, int $options = \SORT_REGULAR)
+                    <a href="#method_sortCustom">sortCustom</a>(callable $closure = null)
         
-                                            <p>Sorts the collection by the given key in descending order. Returns a new Collection.</p>                </div>
+                                            <p>Sorts the collection using a custom sorting function. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -591,19 +521,9 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_splice">splice</a>(int $offset, int $length = null, array $replacement = array())
+                    <a href="#method_sortCustomKey">sortCustomKey</a>(callable $closure = null)
         
-                                            <p>Removes and returns a slice of items starting at the specified index. Returns a new Collection.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_sum">sum</a>(callable|null $closure = null)
-        
-                                            <p>Returns the sum of all items in the collection.</p>                </div>
+                                            <p>Sorts the collection by key using a custom sorting function. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -611,9 +531,9 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_take">take</a>(int $limit)
+                    <a href="#method_sortKey">sortKey</a>(bool $descending = false, int $options = \SORT_REGULAR)
         
-                                            <p>Returns a new collection with the specified number of items.</p>                </div>
+                                            <p>Sorts the collection by key, using sort behaviour flags. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -621,7 +541,7 @@
                     <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unique">unique</a>(mixed $key)
+                    <a href="#method_unique">unique</a>(mixed|null $key, int $options = \SORT_REGULAR)
         
                                             <p>Returns all of the unique items in the collection. Returns a new Collection.</p>                </div>
                 <div class="col-md-2"></div>
@@ -644,9 +564,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L25">line 25</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L25">line 25</a></div>
         <code>                    
-    <strong>__construct</strong>(array|null $data = null)
+    <strong>__construct</strong>(array $data = null)
         </code>
     </h3>
     <div class="details">
@@ -660,7 +580,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|null</td>
+                <td>array</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -677,7 +597,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_all">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L119">line 119</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L119">line 119</a></div>
         <code>                    mixed[]
     <strong>all</strong>()
         </code>
@@ -708,50 +628,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_avg">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L128">line 128</a></div>
-        <code>                    mixed
-    <strong>avg</strong>(callable|null $closure = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Gets the average of all items.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>callable|null</td>
-                <td>$closure</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_chunk">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L143">line 143</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L129">line 129</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>chunk</strong>(int $numitems, bool $preserve_keys = false)
         </code>
@@ -761,7 +639,7 @@
     
 
                     <div class="method-description">
-                                    <p>Breaks the collection into multiple, smaller collections of a given size. Returns a new Collection.</p>                                                </div>
+                                    <p>Breaks the collection into multiple, smaller chunks of a given size. Returns a new Collection.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -798,7 +676,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L110">line 110</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L110">line 110</a></div>
         <code>                    $this
     <strong>clear</strong>()
         </code>
@@ -829,129 +707,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_collapse">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L151">line 151</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>collapse</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Collapses a collection of arrays into a flat collection. Returns a new Collection.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_combine">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L172">line 172</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>combine</strong>(mixed $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Combines the keys of the collection with the values of another array or collection. Returns a new Collection.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$values</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_contains">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L182">line 182</a></div>
-        <code>                    bool
-    <strong>contains</strong>(callable|mixed $item, mixed|null $value = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Determines whether the collection contains a given item.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>callable|mixed</td>
-                <td>$item</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>mixed|null</td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L215">line 215</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L145">line 145</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>copy</strong>()
         </code>
@@ -983,7 +740,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L207">line 207</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L137">line 137</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1015,7 +772,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L100">line 100</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L100">line 100</a></div>
         <code>                    $this
     <strong>delete</strong>(mixed $key)
         </code>
@@ -1057,7 +814,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_diff">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L224">line 224</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L154">line 154</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>diff</strong>(mixed[]|<a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a> $arr)
         </code>
@@ -1099,7 +856,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_diffKeys">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L237">line 237</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L167">line 167</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>diffKeys</strong>(mixed[]|<a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a> $arr)
         </code>
@@ -1141,7 +898,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_each">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L250">line 250</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L180">line 180</a></div>
         <code>                    $this
     <strong>each</strong>(callable $closure)
         </code>
@@ -1159,7 +916,7 @@
                     <tr>
                 <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -1183,9 +940,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_every">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L267">line 267</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>every</strong>(int $nth, int $offset = 0)
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L196">line 196</a></div>
+        <code>                    bool
+    <strong>every</strong>(callable $closure)
         </code>
     </h3>
     <div class="details">
@@ -1193,20 +950,15 @@
     
 
                     <div class="method-description">
-                                    <p>Creates a new collection consisting of every n-th element.</p>                                                </div>
+                                    <p>Returns true if all elements pass the given truth test.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$nth</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$offset</td>
-                <td></td>
+                <td>callable</td>
+                <td>$closure</td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -1215,7 +967,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -1230,7 +982,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_except">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L287">line 287</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L211">line 211</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>except</strong>(array $keys)
         </code>
@@ -1272,7 +1024,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L303">line 303</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L227">line 227</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>filter</strong>(callable $closure)
         </code>
@@ -1290,7 +1042,7 @@
                     <tr>
                 <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -1314,9 +1066,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_first">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L320">line 320</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L244">line 244</a></div>
         <code>                    mixed|null
-    <strong>first</strong>(callable|null $closure = null)
+    <strong>first</strong>(callable $closure = null)
         </code>
     </h3>
     <div class="details">
@@ -1330,9 +1082,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|null</td>
+                <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -1356,7 +1108,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_flatten">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L340">line 340</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L269">line 269</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>flatten</strong>(int $depth = 0)
         </code>
@@ -1397,40 +1149,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_flip">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L349">line 349</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>flip</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Swaps the collection's keys with their corresponding values. Returns a new Collection.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L359">line 359</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L279">line 279</a></div>
         <code>                    mixed|null
     <strong>get</strong>(mixed $key)
         </code>
@@ -1472,9 +1192,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_groupBy">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L372">line 372</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L288">line 288</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>groupBy</strong>(mixed $column)
+    <strong>groupBy</strong>(callable|mixed $column)
         </code>
     </h3>
     <div class="details">
@@ -1488,9 +1208,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>callable|mixed</td>
                 <td>$column</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): mixed</code></td>
             </tr>
             </table>
 
@@ -1514,7 +1234,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_has">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L396">line 396</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L314">line 314</a></div>
         <code>                    bool
     <strong>has</strong>(mixed $key)
         </code>
@@ -1556,7 +1276,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_implode">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L406">line 406</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L326">line 326</a></div>
         <code>                    string
     <strong>implode</strong>(mixed $col, string $glue = &#039;, &#039;)
         </code>
@@ -1566,7 +1286,7 @@
     
 
                     <div class="method-description">
-                                    <p>Joins the items in a collection. Its arguments depend on the type of items in the collection. If the collection contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values.</p>                                                </div>
+                                    <p>Joins the items in a collection. Its arguments depend on the type of items in the collection.</p>                    <p>If the collection contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1594,6 +1314,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="https://secure.php.net/BadMethodCallException" target="_blank">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                         
                         
@@ -1603,7 +1332,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_indexOf">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L426">line 426</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L355">line 355</a></div>
         <code>                    int|null
     <strong>indexOf</strong>(mixed $value)
         </code>
@@ -1645,7 +1374,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_intersect">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L445">line 445</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L374">line 374</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>intersect</strong>(mixed[]|<a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a> $arr)
         </code>
@@ -1686,50 +1415,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_keyBy">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L458">line 458</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>keyBy</strong>(mixed $col)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Keys the collection by the given key.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$col</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_keys">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L485">line 485</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L386">line 386</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>keys</strong>()
         </code>
@@ -1761,9 +1448,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_last">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L494">line 494</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L395">line 395</a></div>
         <code>                    mixed|null
-    <strong>last</strong>(callable|null $closure = null)
+    <strong>last</strong>(callable $closure = null)
         </code>
     </h3>
     <div class="details">
@@ -1777,9 +1464,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|null</td>
+                <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -1803,9 +1490,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_map">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L515">line 515</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L421">line 421</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>map</strong>(callable|null $closure)
+    <strong>map</strong>(callable $closure)
         </code>
     </h3>
     <div class="details">
@@ -1819,9 +1506,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|null</td>
+                <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): mixed</code></td>
             </tr>
             </table>
 
@@ -1845,9 +1532,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_max">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L526">line 526</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L433">line 433</a></div>
         <code>                    int
-    <strong>max</strong>(mixed $key = &#039;&#039;)
+    <strong>max</strong>(mixed|null $key = null)
         </code>
     </h3>
     <div class="details">
@@ -1861,7 +1548,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>mixed|null</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -1887,9 +1574,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L541">line 541</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L464">line 464</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>merge</strong>(array $arr)
+    <strong>merge</strong>(<a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a> $collection)
         </code>
     </h3>
     <div class="details">
@@ -1897,14 +1584,14 @@
     
 
                     <div class="method-description">
-                                    <p>Merges the given array into the collection. Any string key in the array matching a string key in the collection will overwrite the value in the collection. Returns a new Collection.</p>                                                </div>
+                                    <p>Merges the given collection into this collection, resulting in a new collection.</p>                    <p>Any string key in the given collection matching a string key in this collection will overwrite the value in this collection.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$arr</td>
+                <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
+                <td>$collection</td>
                 <td></td>
             </tr>
             </table>
@@ -1929,7 +1616,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_min">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L550">line 550</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L448">line 448</a></div>
         <code>                    int
     <strong>min</strong>(mixed|null $key = null)
         </code>
@@ -1970,8 +1657,64 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_nth">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L475">line 475</a></div>
+        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
+    <strong>nth</strong>(int $nth, int $offset = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a new collection consisting of every n-th element.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$nth</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="https://secure.php.net/InvalidArgumentException" target="_blank">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                        
+                        
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_only">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L565">line 565</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L495">line 495</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>only</strong>(array $keys)
         </code>
@@ -2012,8 +1755,50 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_partition">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L511">line 511</a></div>
+        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>[]
+    <strong>partition</strong>(callable $closure)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Partitions the collection into two collections where the first collection contains the items that passed and the second contains the items that failed.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$closure</td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                        
+                        
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_pluck">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L582">line 582</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L532">line 532</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>pluck</strong>(mixed $key, mixed $index = null)
         </code>
@@ -2059,82 +1844,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pop">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L610">line 610</a></div>
-        <code>                    mixed
-    <strong>pop</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes and returns the last item from the collection.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_pull">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L619">line 619</a></div>
-        <code>                    mixed
-    <strong>pull</strong>(mixed $key)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes and returns an item from the collection by its key.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_random">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L633">line 633</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L563">line 563</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>random</strong>(int $num = 1)
         </code>
@@ -2176,7 +1887,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reduce">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L653">line 653</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L583">line 583</a></div>
         <code>                    mixed|null|void
     <strong>reduce</strong>(callable $closure, mixed|null $carry = null)
         </code>
@@ -2194,7 +1905,7 @@
                     <tr>
                 <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($carry, $value): mixed</code></td>
             </tr>
                     <tr>
                 <td>mixed|null</td>
@@ -2223,7 +1934,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reverse">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L666">line 666</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L596">line 596</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>reverse</strong>(bool $preserve_keys = false)
         </code>
@@ -2265,9 +1976,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_search">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L676">line 676</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L606">line 606</a></div>
         <code>                    mixed|bool
-    <strong>search</strong>(callable|mixed $needle, bool $strict = false)
+    <strong>search</strong>(mixed $needle, bool $strict = true)
         </code>
     </h3>
     <div class="details">
@@ -2281,7 +1992,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|mixed</td>
+                <td>mixed</td>
                 <td>$needle</td>
                 <td></td>
             </tr>
@@ -2312,7 +2023,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L90">line 90</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L90">line 90</a></div>
         <code>                    $this
     <strong>set</strong>(mixed $key, mixed $value)
         </code>
@@ -2358,40 +2069,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_shift">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L695">line 695</a></div>
-        <code>                    mixed
-    <strong>shift</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes and returns the first item from the collection.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_shuffle">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L703">line 703</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L614">line 614</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>shuffle</strong>()
         </code>
@@ -2423,9 +2102,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_slice">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L717">line 717</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L628">line 628</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>slice</strong>(int $offset, int|null $limit = null, bool $preserve_keys = false)
+    <strong>slice</strong>(int $offset, int $limit = null, bool $preserve_keys = false)
         </code>
     </h3>
     <div class="details">
@@ -2444,7 +2123,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>int|null</td>
+                <td>int</td>
                 <td>$limit</td>
                 <td></td>
             </tr>
@@ -2474,10 +2153,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_sort">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L728">line 728</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>sort</strong>(callable|null $closure = null, int $options = SORT_REGULAR)
+                    <h3 id="method_some">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L638">line 638</a></div>
+        <code>                    bool
+    <strong>some</strong>(callable $closure)
         </code>
     </h3>
     <div class="details">
@@ -2485,20 +2164,15 @@
     
 
                     <div class="method-description">
-                                    <p>Sorts the collection. Returns a new Collection.</p>                                                </div>
+                                    <p>Returns true if at least one element passes the given truth test.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|null</td>
+                <td>callable</td>
                 <td>$closure</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$options</td>
-                <td></td>
+                <td>Callback specification: <code>function ($value, $key): bool</code></td>
             </tr>
             </table>
 
@@ -2507,7 +2181,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -2521,10 +2195,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_sortBy">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L747">line 747</a></div>
+                    <h3 id="method_sort">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L654">line 654</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>sortBy</strong>(mixed|callable $sortkey, int $options = \SORT_REGULAR, bool $descending = false)
+    <strong>sort</strong>(bool $descending = false, int $options = \SORT_REGULAR)
         </code>
     </h3>
     <div class="details">
@@ -2532,68 +2206,16 @@
     
 
                     <div class="method-description">
-                                    <p>Sorts the collection by the given key. Returns a new Collection.</p>                                                </div>
+                                    <p>Sorts the collection, using sort behaviour flags. Returns a new Collection.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>mixed|callable</td>
-                <td>$sortkey</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$options</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td>bool</td>
                 <td>$descending</td>
                 <td></td>
             </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                        
-                        
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_sortByDesc">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L775">line 775</a></div>
-        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>sortByDesc</strong>(mixed|<a href="https://secure.php.net/Closure" target="_blank">Closure</a> $sortkey, int $options = \SORT_REGULAR)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sorts the collection by the given key in descending order. Returns a new Collection.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed|<a href="https://secure.php.net/Closure" target="_blank">Closure</a></td>
-                <td>$sortkey</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td>int</td>
                 <td>$options</td>
@@ -2620,10 +2242,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_splice">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L786">line 786</a></div>
+                    <h3 id="method_sortCustom">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L689">line 689</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>splice</strong>(int $offset, int $length = null, array $replacement = array())
+    <strong>sortCustom</strong>(callable $closure = null)
         </code>
     </h3>
     <div class="details">
@@ -2631,25 +2253,15 @@
     
 
                     <div class="method-description">
-                                    <p>Removes and returns a slice of items starting at the specified index. Returns a new Collection.</p>                                                </div>
+                                    <p>Sorts the collection using a custom sorting function. Returns a new Collection.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$offset</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$length</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$replacement</td>
-                <td></td>
+                <td>callable</td>
+                <td>$closure</td>
+                <td>Callback specification: <code>function ($a, $b): int</code></td>
             </tr>
             </table>
 
@@ -2672,10 +2284,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_sum">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L796">line 796</a></div>
-        <code>                    int
-    <strong>sum</strong>(callable|null $closure = null)
+                    <h3 id="method_sortCustomKey">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L701">line 701</a></div>
+        <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
+    <strong>sortCustomKey</strong>(callable $closure = null)
         </code>
     </h3>
     <div class="details">
@@ -2683,15 +2295,15 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the sum of all items in the collection.</p>                                                </div>
+                                    <p>Sorts the collection by key using a custom sorting function. Returns a new Collection.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable|null</td>
+                <td>callable</td>
                 <td>$closure</td>
-                <td></td>
+                <td>Callback specification: <code>function ($a, $b): int</code></td>
             </tr>
             </table>
 
@@ -2700,7 +2312,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -2714,10 +2326,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_take">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L811">line 811</a></div>
+                    <h3 id="method_sortKey">
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L672">line 672</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>take</strong>(int $limit)
+    <strong>sortKey</strong>(bool $descending = false, int $options = \SORT_REGULAR)
         </code>
     </h3>
     <div class="details">
@@ -2725,14 +2337,19 @@
     
 
                     <div class="method-description">
-                                    <p>Returns a new collection with the specified number of items.</p>                                                </div>
+                                    <p>Sorts the collection by key, using sort behaviour flags. Returns a new Collection.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
+                <td>bool</td>
+                <td>$descending</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td>int</td>
-                <td>$limit</td>
+                <td>$options</td>
                 <td></td>
             </tr>
             </table>
@@ -2757,9 +2374,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_unique">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L824">line 824</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L715">line 715</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
-    <strong>unique</strong>(mixed $key)
+    <strong>unique</strong>(mixed|null $key, int $options = \SORT_REGULAR)
         </code>
     </h3>
     <div class="details">
@@ -2773,8 +2390,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>mixed|null</td>
                 <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
                 <td></td>
             </tr>
             </table>
@@ -2790,6 +2412,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="https://secure.php.net/BadMethodCallException" target="_blank">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                         
                         
@@ -2799,7 +2430,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_values">
-        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.1.4/src/Collection.php#L847">line 847</a></div>
+        <div class="location">at         <a href="https://github.com/CharlotteDunois/Collection/blob/v0.2.0/src/Collection.php#L751">line 751</a></div>
         <code>                    <a href="../../CharlotteDunois/Collect/Collection.html"><abbr title="CharlotteDunois\Collect\Collection">Collection</abbr></a>
     <strong>values</strong>()
         </code>
