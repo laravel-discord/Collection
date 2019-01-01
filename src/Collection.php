@@ -1,7 +1,7 @@
 <?php
 /**
  * Collection
- * Copyright 2016-2018 Charlotte Dunois, All Rights Reserved
+ * Copyright 2016-2019 Charlotte Dunois, All Rights Reserved
  *
  * Website: https://charuru.moe
  * License: https://github.com/CharlotteDunois/Collection/blob/master/LICENSE
