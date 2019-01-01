@@ -686,7 +686,7 @@ class Collection implements \Countable, \Iterator {
      * @param callable  $closure  Callback specification: `function ($a, $b): int`
      * @return \CharlotteDunois\Collect\Collection
      */
-    function sortCustom(callable $closure = null) {
+    function sortCustom(callable $closure) {
         $data = $this->data;
         \uasort($data, $closure);
         
@@ -698,7 +698,7 @@ class Collection implements \Countable, \Iterator {
      * @param callable  $closure  Callback specification: `function ($a, $b): int`
      * @return \CharlotteDunois\Collect\Collection
      */
-    function sortCustomKey(callable $closure = null) {
+    function sortCustomKey(callable $closure) {
         $data = $this->data;
         \uksort($data, $closure);
         
