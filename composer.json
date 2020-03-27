@@ -1,5 +1,5 @@
 {
-    "name": "charlottedunois/collection",
+    "name": "laravel-discord/collection",
     "type": "library",
     "description": "Collection, an utility to conventionally store a key-value pair.",
     "homepage": "https://github.com/CharlotteDunois/Collection",
